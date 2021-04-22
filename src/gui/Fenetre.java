@@ -1,14 +1,23 @@
 package gui;
+
 import java.awt.Color;
 import javax.swing.*;
 import java.awt.event.*;
 
+class Fenetre extends JFrame implements ActionListener { // Template JFrame, extends from support Swing component, ActionListener for the method addActionListener and ActionPerformed
+    
+    static JFrame maFenetre; // declared attribut to create JFrame
 
-public class Fenetre {
+    String opr0, op1, op3; //Button has String type value on input, here to store all the input string operator and operands (1 + 2 = 3)
 
+
+    calculator() {
+        opr0 = op1 = op3 = ""; //
+    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		JFrame maFenetre = new JFrame();
+		maFenetre = new JFrame();
+
 		maFenetre.setVisible(true);
 		
         // create a label to display text
@@ -61,7 +70,7 @@ public class Fenetre {
         maFenetre.setSize(300, 300);
         
         //Associe les boutons et les fonctions
-        //Recuperer les nombres entrés sur la calculatrice
+        //Recuperer les nombres entrï¿½s sur la calculatrice
         
         //Addition
         o1.addActionListener(new ActionListener() {
@@ -75,6 +84,6 @@ public class Fenetre {
         //Division
         //Soustraction
 	}
-
 }
+
 
