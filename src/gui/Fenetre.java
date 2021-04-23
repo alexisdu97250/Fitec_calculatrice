@@ -3,11 +3,15 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener; 
 import javax.swing.*;
+
+
 import java.awt.event.*;
 
-class Fenetre extends JFrame implements ActionListener { // Template JFrame, extends from support Swing component, ActionListener for the method addActionListener and ActionPerformed
+public class Fenetre extends JFrame implements ActionListener { // Template JFrame, extends from support Swing component, ActionListener for the method addActionListener and ActionPerformed
     
     static JFrame maFenetre; // declared attribut to create JFrame
 
@@ -24,8 +28,8 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
 		maFenetre.setVisible(true);
 		
         // create a label to display text
-        JLabel l = new JLabel("panel label");
-        JLabel ecran = new JLabel("0");
+        JLabel l = new JLabel("Calculatrice");
+        final JLabel ecran = new JLabel("0");
         JPanel panEcran = new JPanel();
         panEcran.setPreferredSize(new Dimension(220, 30));
         panEcran.add(ecran);
@@ -44,7 +48,7 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
         JButton b8 = new JButton("8");
         JButton b9 = new JButton("9");
         JButton o1 = new JButton("+");
-
+        JButton e1 = new JButton("=");
         
         
         JPanel ligne0 = new JPanel();
@@ -80,6 +84,7 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
         ligne4.setLayout(new BoxLayout (ligne4, BoxLayout.LINE_AXIS));
         ligne4.add(o1);
         ligne4.add(b);
+        ligne4.add(e1);
        
         
         //On crée 3 colonnes
@@ -91,6 +96,9 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
         colonnes.add(ligne2);
         colonnes.add(ligne3);
         colonnes.add(ligne4);
+        
+        
+        
         
         panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
         maFenetre.getContentPane().add(colonnes);
@@ -109,23 +117,50 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
         //Associe les boutons et les fonctions
         //Recuperer les nombres entrï¿½s sur la calculatrice
         
+        
+        
+
+        
+        
         //Addition
         o1.addActionListener(new ActionListener() {
+        	double chiffre1 = 0;
         	public void actionPerformed(ActionEvent e) {
-        		Operations.add(2,6);
+        		String elem = ((JButton)e.getSource()).getText();
+        		chiffre1 = chiffre1 + Double.valueOf(ecran.getText()).doubleValue();
+        	    ecran.setText(String.valueOf(chiffre1));
+        		//ecran.setText(elem);
+        		
+        		
+        		
         		//Recuperer le numero ecrit avant et demander le numero apres
         		//Afficher le resultat sur la fenetre
         	}
         });
+        b1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String chiffre = ((JButton)e.getSource()).getText();
+        		ecran.setText(chiffre);
+        	}
+        });
+        e1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String chiffre = ((JButton)e.getSource()).getText();
+        		ecran.setText(chiffre);
+        	}
+        });
+        
+        
         //Multiplication
         //Division
         //Soustraction
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub        b1.addActionListener(new ActionListener() {
+
 	}
+	
 }
 
 
