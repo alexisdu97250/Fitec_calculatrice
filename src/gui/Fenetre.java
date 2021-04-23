@@ -1,6 +1,9 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -11,7 +14,7 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
     String opr0, op1, op3; //Button has String type value on input, here to store all the input string operator and operands (1 + 2 = 3)
 
 
-    calculator() {
+    void calculator() {
         opr0 = op1 = op3 = ""; //
     }
 	public static void main(String[] args) {
@@ -22,7 +25,10 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
 		
         // create a label to display text
         JLabel l = new JLabel("panel label");
-        
+        JLabel ecran = new JLabel("0");
+        JPanel panEcran = new JPanel();
+        panEcran.setPreferredSize(new Dimension(220, 30));
+        panEcran.add(ecran);
         //Creer une fenetre d'affichage dans l'Interface (voir setBounds)
         
         // create new buttons
@@ -86,8 +92,9 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
         colonnes.add(ligne3);
         colonnes.add(ligne4);
         
+        panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
         maFenetre.getContentPane().add(colonnes);
-        
+        maFenetre.add(panEcran, BorderLayout.NORTH);
         
         
         // setbackground of panel
@@ -113,6 +120,11 @@ class Fenetre extends JFrame implements ActionListener { // Template JFrame, ext
         //Multiplication
         //Division
         //Soustraction
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
